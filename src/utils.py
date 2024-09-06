@@ -32,6 +32,8 @@ def missing_values_table(df):
     # Return the dataframe with missing information
     return mis_val_table_ren_columns
 
+
+
 def outliers_table(df):
     # Initialize empty lists to store results
     outliers_info = []
@@ -69,16 +71,19 @@ def outliers_table(df):
     # Return the dataframe with outlier information
     return outliers_table_df
 
+
 def convert_bytes_to_megabytes(df, bytes_data):
     megabyte = 1e+6  # 1 MB = 1e+6 Bytes
     df[bytes_data] = df[bytes_data] / megabyte
     return df[bytes_data]
+
 
 def fix_outlier(df, column, percentile=0.95):
     threshold = df[column].quantile(percentile)
     median = df[column].median()
     df[column] = np.where(df[column] > threshold, median, df[column])
     return df[column]
+
 
 def remove_outliers(df, column_to_process, z_threshold=3):
     # Apply outlier removal to the specified column
