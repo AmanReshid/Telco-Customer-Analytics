@@ -78,6 +78,11 @@ def convert_bytes_to_megabytes(df, bytes_data):
     return df[bytes_data]
 
 
+def convert_ms_to_seconds(ms):
+    return ms / 1000
+
+
+
 def fix_outlier(df, column, percentile=0.95):
     threshold = df[column].quantile(percentile)
     median = df[column].median()
